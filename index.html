@@ -4,13 +4,159 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LEN CREW</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- FontAwesome ikonkalari -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Alpine.js v3 -->
     <script
-      defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
     ></script>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    START
+    <header>
+      <nav
+        class="bg-[#0F0F0F]"
+        x-data="{ activeItem: 'home', menuOpen: false }"
+      >
+        <div
+          class="relative flex items-center justify-center px-4 mx-auto max-md:justify-between max-w-7xl py-7"
+        >
+          <!-- Logo -->
+          <div>
+            <img
+              src="./imgs/icons/logo.svg"
+              alt="logo"
+              class="w-32 md:hidden"
+            />
+          </div>
+
+          <ul class="items-center hidden gap-6 md:flex">
+            <template
+              x-for="(item, index) in [
+          { id: 'home', label: 'Главная' },
+          { id: 'about', label: 'О нас' },
+          { id: 'link', label: 'Наши линки' },
+          { id: 'work', label: 'Как мы работаем' },
+          { id: 'contact', label: 'Ассортимент' }
+        ]"
+            >
+              <div class="flex items-center gap-6">
+                <template x-if="index === 3">
+                  <img src="./imgs/icons/logo.svg" alt="logo" class="mx-10" />
+                </template>
+
+                <li
+                  :class="activeItem === item.id 
+                ? 'bg-[#ffffff0D] text_gradient' 
+                : 'bg-[#00000040] text-white'"
+                  class="text-sm py-1.5 uppercase px-2.5 rounded-[6px] cursor-pointer"
+                  @click="activeItem = item.id"
+                >
+                  <a :href="'#' + item.id" x-text="item.label"></a>
+                </li>
+              </div>
+            </template>
+          </ul>
+
+          <select
+            class="bg-[#00000040] outline-none text-white p-1 rounded-md absolute right-0 max-md:right-[60px] top-[50%] translate-y-[-50%]"
+          >
+            <option value="RU">RU</option>
+            <option value="EN">EN</option>
+          </select>
+
+          <button
+            class="md:hidden text-white text-2xl p-2 rounded-md bg-[#00000040] cursor-pointer"
+            @click="menuOpen = !menuOpen"
+          >
+            <i :class="menuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+          </button>
+        </div>
+
+        <!-- Mobil menyu -->
+        <div
+          class="fixed inset-0 z-40 flex items-center justify-center py-10 transition-all duration-300 bg-black mt-26 h-max bg-opacity-70"
+          :class="menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+          @click="menuOpen = false"
+        >
+          <div
+            class="bg-[#0F0F0F] w-64 h-max rounded-lg shadow-lg p-6 flex flex-col gap-4"
+            @click.stop
+          >
+            <template
+              x-for="item in [
+          { id: 'home', label: 'Главная' },
+          { id: 'about', label: 'О нас' },
+          { id: 'link', label: 'Наши линки' },
+          { id: 'work', label: 'Как мы работаем' },
+          { id: 'contact', label: 'Ассортимент' }
+        ]"
+            >
+              <a
+                class="block text-white text-lg py-2 px-4 rounded-md bg-[#00000040] text-center mb-3"
+                :class="activeItem === item.id ? 'bg-[#ffffff0D] text_gradient' : ''"
+                @click="activeItem = item.id; menuOpen = false"
+                :href="'#' + item.id"
+                x-text="item.label"
+              ></a>
+            </template>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section
+        class="flex flex-col items-center justify-center bg_secOne h-[566px] max-md:h-[450px]"
+      >
+        <section
+          class="relative flex flex-col items-center justify-center w-[340px] h-[340px] sm:w-[488px] sm:h-[488px]"
+        >
+          <svg
+            viewBox="0 0 200 200"
+            class="absolute w-full h-full rotating-text"
+          >
+            <defs>
+              <path
+                id="circlePath"
+                d="M 100, 100
+                    m -80, 0
+                    a 80,80 0 1,1 160,0
+                    a 80,80 0 1,1 -160,0"
+              />
+            </defs>
+            <text fill="white" font-size="12" font-weight="bold">
+              <textPath href="#circlePath" startOffset="0%">
+                &nbsp;&nbsp;&nbsp; MORE THAN TRUSTED VENDOR &nbsp;&nbsp;&nbsp;
+                MORE THAN TRUSTED VENDOR &nbsp;&nbsp;&nbsp; MORE THAN TRUSTED
+                VENDOR &nbsp;&nbsp;&nbsp;
+              </textPath>
+            </text>
+          </svg>
+
+          <img src="./imgs/hero.png" alt="" class="w-20 max-md:w-[60px]" />
+          <img
+            src="./imgs/icons/logo.svg"
+            alt="Logo"
+            class="mb-6 w-[340px] max-md:w-[196px] mt-[-20px] max-md:mb-4"
+          />
+
+          <button
+            class="bg-white text-black font-bold uppercase py-2.5 px-5 rounded-md max-md:px-3"
+          >
+            Стать партнёром
+          </button>
+        </section>
+      </section>
+    </main>
   </body>
 </html>

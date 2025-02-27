@@ -1,0 +1,31 @@
+.text_gradient {
+  background: linear-gradient(141.63deg, #ffed61 14.81%, #ffa341 87.44%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.button_gradient {
+  background: linear-gradient(
+    92.23deg,
+    #e3e3e3 1.52%,
+    #858585 23.25%,
+    #f8f8f8 47.89%,
+    #d2d2d2 64.67%,
+    #f7f7f7 97.93%
+  );
+}
+
+.bg_secOne {
+  background: #0f0f0f url("./imgs/herobg.png") center/cover no-repeat;
+}
+
+@keyframes rotateText {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotating-text {
+  animation: rotateText 20s linear infinite;
+}
