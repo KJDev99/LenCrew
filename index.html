@@ -23,10 +23,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
+    <header id="home">
       <nav
         class="bg-[#0F0F0F]"
-        x-data="{ activeItem: 'home', menuOpen: false }"
+        x-data="{ activeItem: 'index', menuOpen: false }"
       >
         <div
           class="relative flex items-center justify-center px-4 mx-auto max-md:justify-between max-w-7xl py-7"
@@ -42,11 +42,11 @@
           <ul class="items-center hidden gap-6 md:flex">
             <template
               x-for="(item, index) in [
-          { id: 'home', label: 'Главная' },
+          { id: 'index', label: 'Главная' },
           { id: 'about', label: 'О нас' },
-          { id: 'link', label: 'Наши линки' },
-          { id: 'work', label: 'Как мы работаем' },
-          { id: 'contact', label: 'Ассортимент' }
+          { id: 'partnor', label: 'Наши линки' },
+          { id: 'news', label: 'как мы работаем' },
+          { id: 'news-detail', label: 'Ассортимент' }
         ]"
             >
               <div class="flex items-center gap-6">
@@ -61,7 +61,10 @@
                   class="text-sm py-1.5 uppercase px-2.5 rounded-[6px] cursor-pointer"
                   @click="activeItem = item.id"
                 >
-                  <a :href="'#' + item.id" x-text="item.label"></a>
+                  <a
+                    :href="'./pages/' + item.id + '.html'"
+                    x-text="item.label"
+                  ></a>
                 </li>
               </div>
             </template>
@@ -156,6 +159,7 @@
         </div>
       </section>
       <section
+        id="about"
         class="bg_sectwo pb-[100px] md:pt-[60px] max-md:pb-[60px] max-md:px-3"
       >
         <h2
@@ -222,7 +226,7 @@
           />
         </div>
       </section>
-      <section class="bg-[#0F0F0F] max-w-[1280px] mx-auto">
+      <section id="link" class="bg-[#0F0F0F] max-w-[1280px] mx-auto">
         <h2
           class="text_gradient2 uppercase text-[28px] font-bold pb-10 text-center max-md:px-3 max-md:pb-6"
         >
@@ -317,6 +321,7 @@
         </div>
       </section>
       <section
+        id="work"
         class="bg-[#0f0f0f] pt-10 pb-[75px] relative max-w-[1280px] mx-auto max-md:px-3 overflow-hidden"
       >
         <h2
@@ -346,7 +351,7 @@
               </p>
             </div>
             <div
-              class="flex flex-col items-start relative md:space-x-7 max-w-[525px] max-md:w-2/3 md:mx-auto p-6 max-md:p-4 relative bg_blur"
+              class="flex max-md:flex-col items-start relative md:space-x-7 max-w-[525px] max-md:w-2/3 md:mx-auto p-6 max-md:p-4 relative bg_blur"
             >
               <div class="border_image"></div>
 
@@ -364,7 +369,7 @@
                   adipiscing elit.
                 </p>
                 <button
-                  class="absolute rounded-full cursor-pointer h-9 w-9 button_gradient right-5 top-5"
+                  class="absolute rounded-full cursor-pointer h-9 w-9 button_gradient right-10 top-5 max-md:right-5"
                 >
                   <i class="fa-solid fa-arrow-right rotate-[-45deg]"></i>
                 </button>
@@ -403,7 +408,7 @@
         />
       </section>
     </main>
-    <footer class="bg-[#090909]">
+    <footer id="contact" class="bg-[#090909]">
       <div class="max-w-[1280px] mx-auto max-md:px-3">
         <div class="grid grid-cols-5 max-md:grid-cols-2 py-8 gap-[10px]">
           <div
@@ -463,7 +468,7 @@
             </h3>
           </div>
           <div
-            class="flex flex-col items-center justify-center w-[235px] max-md:w-full mx-auto h-[116px] relative bg_footerItem col-span-2"
+            class="flex flex-col items-center justify-center w-[235px] max-md:w-full mx-auto h-[116px] relative bg_footerItem max-md:col-span-2"
           >
             <div class="border_image !rounded-[12px]"></div>
             <div class="flex gap-[14px]">

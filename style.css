@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 .text_gradient {
   background: linear-gradient(141.63deg, #ffed61 14.81%, #ffa341 87.44%);
   -webkit-background-clip: text;
