@@ -3,6 +3,25 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.text_gradient2 {
+  background: linear-gradient(
+    92.23deg,
+    #e3e3e3 1.52%,
+    #858585 23.25%,
+    #f8f8f8 47.89%,
+    #c6c6c6 74.54%,
+    #f7f7f7 97.93%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text_gradient3 {
+  background: linear-gradient(141.63deg, #ffed61 14.81%, #ffa341 87.44%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .button_gradient {
   background: linear-gradient(
     92.23deg,
@@ -12,10 +31,6 @@
     #d2d2d2 64.67%,
     #f7f7f7 97.93%
   );
-}
-
-.bg_secOne {
-  background: #0f0f0f url("./imgs/herobg.png") center/cover no-repeat;
 }
 
 @keyframes rotateText {
@@ -28,4 +43,57 @@
 }
 .rotating-text {
   animation: rotateText 20s linear infinite;
+}
+
+.bg_secOne {
+  background: #0f0f0f url("./imgs/herobg.png") center / cover no-repeat;
+}
+.bg_sectwo {
+  background: #0f0f0f url("./imgs/seconeBg.png") center / cover no-repeat;
+}
+@media (max-width: 768px) {
+  .bg_sectwo {
+    background: #0f0f0f;
+  }
+}
+.border_gradient {
+  border: 2px solid;
+  border-image-source: linear-gradient(126.05deg, #666666 0%, #141414 33.73%);
+}
+
+.border_image {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(126.05deg, #666666 0%, #141414 33.73%);
+  mask: linear-gradient(white, white) content-box, linear-gradient(white, white);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(white, white) content-box,
+    linear-gradient(white, white);
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+}
+
+.bg_blur {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(
+    126.05deg,
+    rgba(102, 102, 102, 0.2) 0%,
+    rgba(20, 20, 20, 0.2) 53.73%
+  );
+}
+.bg_footerItem {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(
+    126.05deg,
+    rgba(102, 102, 102, 0.2) 0%,
+    rgba(20, 20, 20, 0.2) 53.73%
+  );
 }
