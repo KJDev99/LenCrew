@@ -26,7 +26,7 @@
         x-data="{ activeItem: 'about', menuOpen: false }"
       >
         <div
-          class="relative flex items-center justify-center px-4 mx-auto max-md:justify-between max-w-7xl py-7"
+          class="relative flex items-center justify-center px-4 mx-auto max-md:justify-between max-w-7xl py-7 max-md:py-4"
         >
           <div>
             <img
@@ -43,7 +43,7 @@
               { id: 'about', label: 'О нас' },
               { id: 'partnor', label: 'Наши линки' },
               { id: 'news', label: 'как мы работаем' },
-              { id: 'index', label: 'Ассортимент' }
+              { id: 'news-detail', label: 'Ассортимент' }
         ]"
             >
               <div class="flex items-center gap-6">
@@ -93,18 +93,18 @@
           >
             <template
               x-for="item in [
-          { id: 'home', label: 'Главная' },
-          { id: 'about', label: 'О нас' },
-          { id: 'link', label: 'Наши линки' },
-          { id: 'work', label: 'Как мы работаем' },
-          { id: 'contact', label: 'Ассортимент' }
+              { id: 'index', label: 'Главная' },
+              { id: 'about', label: 'О нас' },
+              { id: 'partnor', label: 'Наши линки' },
+              { id: 'news', label: 'как мы работаем' },
+              { id: 'news-detail', label: 'Ассортимент' }
         ]"
             >
               <a
-                class="block text-white text-lg py-2 px-4 rounded-md bg-[#00000040] text-center mb-3"
+                class="block text-white text-lg py-2 px-4 rounded-md bg-[#00000040] text-center mb-3 uppercase"
                 :class="activeItem === item.id ? 'bg-[#ffffff0D] text_gradient' : ''"
                 @click="activeItem = item.id; menuOpen = false"
-                :href="'#' + item.id"
+                :href="item.id === 'index' ? '../' + item.id + '.html' : './' + item.id + '.html' "
                 x-text="item.label"
               ></a>
             </template>

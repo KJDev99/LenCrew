@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LEN CREW</title>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header id="home">
+      <nav
+        class="bg-[#0F0F0F]"
+        x-data="{ activeItem: 'news-detail', menuOpen: false }"
+      >
+        <div
+          class="relative flex items-center justify-center px-4 mx-auto max-md:justify-between max-w-7xl py-7 max-md:py-4"
+        >
+          <div>
+            <img
+              src="../imgs/icons/logo.svg"
+              alt="logo"
+              class="w-32 md:hidden"
+            />
+          </div>
+
+          <ul class="items-center hidden gap-6 md:flex">
+            <template
+              x-for="(item, index) in [
+              { id: 'index', label: 'Главная' },
+              { id: 'about', label: 'О нас' },
+              { id: 'partnor', label: 'Наши линки' },
+              { id: 'news', label: 'как мы работаем' },
+              { id: 'news-detail', label: 'Ассортимент' }
+        ]"
+            >
+              <div class="flex items-center gap-6">
+                <template x-if="index === 3">
+                  <img src="../imgs/icons/logo.svg" alt="logo" class="mx-10" />
+                </template>
+
+                <li
+                  :class="activeItem === item.id 
+                ? 'bg-[#ffffff0D] text_gradient' 
+                : 'bg-[#00000040] text-white'"
+                  class="text-sm py-1.5 uppercase px-2.5 rounded-[6px] cursor-pointer"
+                  @click="activeItem = item.id"
+                >
+                  <a
+                    :href="item.id === 'index' ? '../' + item.id + '.html' : './' + item.id + '.html' "
+                    x-text="item.label"
+                  ></a>
+                </li>
+              </div>
+            </template>
+          </ul>
+
+          <select
+            class="bg-[#00000040] outline-none text-white p-1 rounded-md absolute right-0 max-md:right-[60px] top-[50%] translate-y-[-50%]"
+          >
+            <option value="RU">RU</option>
+            <option value="EN">EN</option>
+          </select>
+
+          <button
+            class="md:hidden text-white text-2xl p-2 rounded-md bg-[#00000040] cursor-pointer"
+            @click="menuOpen = !menuOpen"
+          >
+            <i :class="menuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+          </button>
+        </div>
+
+        <div
+          class="fixed inset-0 z-40 flex items-center justify-center py-10 transition-all duration-300 bg-black mt-26 h-max bg-opacity-70"
+          :class="menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'"
+          @click="menuOpen = false"
+        >
+          <div
+            class="bg-[#0F0F0F] w-64 h-max rounded-lg shadow-lg p-6 flex flex-col gap-4"
+            @click.stop
+          >
+            <template
+              x-for="item in [
+              { id: 'index', label: 'Главная' },
+              { id: 'about', label: 'О нас' },
+              { id: 'partnor', label: 'Наши линки' },
+              { id: 'news', label: 'как мы работаем' },
+              { id: 'news-detail', label: 'Ассортимент' }
+        ]"
+            >
+              <a
+                class="block text-white text-lg py-2 px-4 rounded-md bg-[#00000040] text-center mb-3 uppercase"
+                :class="activeItem === item.id ? 'bg-[#ffffff0D] text_gradient' : ''"
+                @click="activeItem = item.id; menuOpen = false"
+                :href="item.id === 'index' ? '../' + item.id + '.html' : './' + item.id + '.html' "
+                x-text="item.label"
+              ></a>
+            </template>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="bg-[#0f0f0f]">
+      <section class="max-w-[1280px] mx-auto max-md:px-3">
+        <div class="flex flex-col">
+          <a href="./news.html" class="my-6 text-white max-md:mb-4 max-md:mt-0">
+            <i class="fa-solid fa-chevron-left text-[#FFA341] ml-1"></i>
+            Назад
+          </a>
+          <div
+            class="h-100 max-md:h-[150px] bg-[#1A1A1A] rounded-[20px] flex items-center justify-center mb-9"
+          >
+            <img src="../imgs/icons/Gallery.svg" alt="" />
+          </div>
+          <h2
+            class="text_gradient2 uppercase text-[28px] max-md:text-[24px] font-bold pb-4"
+          >
+            заголовка h2
+          </h2>
+          <p class="text-white mb-9 max-md:text-sm">
+            Lorem ipsum dolor sit amet consectetur. Ac aliquam odio a mi odio
+            tristique nibh. Viverra amet arcu nulla dignissim id. Integer at sed
+            non amet tortor tortor id. Ac vulputate a non quis a diam auctor.
+            Adipiscing sem sit nam lacus. Ut venenatis ipsum id semper dignissim
+            fusce lorem. Ultricies facilisis mauris tincidunt enim neque.
+            Consectetur dui tincidunt arcu elementum nulla quam id duis.
+            Vulputate mauris viverra consectetur tincidunt quisque et. Consequat
+            mi nulla augue duis morbi. Est sed at mauris habitant senectus
+            lorem. Nisi nibh id nulla morbi nibh facilisi tristique dignissim.
+            Donec commodo risus proin eget habitasse viverra. Lacus placerat
+            pulvinar tincidunt lorem dolor. In gravida vel placerat egestas
+            venenatis adipiscing. Ut in lacus sed amet integer dolor. Amet
+            vulputate cras sit quis pellentesque eget elementum eget in.
+            Pellentesque in turpis eu vulputate placerat sit ipsum. Risus
+            quisque turpis curabitur mi adipiscing. Aliquam enim at laoreet
+            tempus et rhoncus scelerisque tellus nulla.
+          </p>
+          <h3
+            class="text_gradient2 uppercase text-[24px] max-md:text-[20px] font-bold pb-4"
+          >
+            Пример заголовка h3
+          </h3>
+          <p class="text-white mb-9 max-md:text-sm">
+            Lorem ipsum dolor sit amet consectetur. Ac aliquam odio a mi odio
+            tristique nibh. Viverra amet arcu nulla dignissim id. Integer at sed
+            non amet tortor tortor id. Ac vulputate a non quis a diam auctor.
+            Adipiscing sem sit nam lacus. Ut venenatis ipsum id semper dignissim
+            fusce lorem. Ultricies facilisis mauris tincidunt enim neque.
+            Consectetur dui tincidunt arcu elementum nulla quam id duis.
+            Vulputate mauris viverra consectetur tincidunt quisque et. Consequat
+            mi nulla augue duis morbi. Est sed at mauris habitant senectus
+            lorem. Nisi nibh id nulla morbi nibh facilisi tristique dignissim.
+            Donec commodo risus proin eget habitasse viverra. Lacus placerat
+            pulvinar tincidunt lorem dolor. In gravida vel placerat egestas
+            venenatis adipiscing. Ut in lacus sed amet integer dolor. Amet
+            vulputate cras sit quis pellentesque eget elementum eget in.
+            Pellentesque in turpis eu vulputate placerat sit ipsum. Risus
+            quisque turpis curabitur mi adipiscing. Aliquam enim at laoreet
+            tempus et rhoncus scelerisque tellus nulla.
+          </p>
+          <h4
+            class="text_gradient2 uppercase text-[20px] max-md:text-[18px] font-bold pb-4"
+          >
+            Пример заголовка h4
+          </h4>
+          <p class="text-white mb-10 max-md:text-sm">
+            Lorem ipsum dolor sit amet consectetur. Ac aliquam odio a mi odio
+            tristique nibh. Viverra amet arcu nulla dignissim id. Integer at sed
+            non amet tortor tortor id. Ac vulputate a non quis a diam auctor.
+            Adipiscing sem sit nam lacus. Ut venenatis ipsum id semper dignissim
+            fusce lorem. Ultricies facilisis mauris tincidunt enim neque.
+            Consectetur dui tincidunt arcu elementum nulla quam id duis.
+            Vulputate mauris viverra consectetur tincidunt quisque et. Consequat
+            mi nulla augue duis morbi. Est sed at mauris habitant senectus
+            lorem. Nisi nibh id nulla morbi nibh facilisi tristique dignissim.
+            Donec commodo risus proin eget habitasse viverra. Lacus placerat
+            pulvinar tincidunt lorem dolor. I n gravida vel placerat egestas
+            venenatis adipiscing. Ut in lacus sed amet integer dolor. Amet
+            vulputate cras sit quis pellentesque eget elementum eget in.
+            Pellentesque in turpis eu vulputate placerat sit ipsum. Risus
+            quisque turpis curabitur mi adipiscing. Aliquam enim at laoreet
+            tempus et rhoncus scelerisque tellus nulla. Vulputate mauris viverra
+            consectetur tincidunt quisque et. Consequat mi nulla augue duis
+            morbi. Est sed at mauris habitant senectus lorem. Nisi nibh id nulla
+            morbi nibh facilisi tristique dignissim. Donec commodo risus proin
+            eget habitasse viverra. Lacus placerat pulvinar tincidunt lorem
+            dolor. I n gravida vel placerat egestas venenatis adipiscing. Ut in
+            lacus sed amet integer dolor. Amet vulputate cras sit quis
+            pellentesque eget elementum eget in. Pellentesque in turpis eu
+            vulputate placerat sit ipsum. Risus quisque turpis curabitur mi
+            adipiscing. Aliquam enim at laoreet tempus et rhoncus scelerisque
+            tellus nulla.
+          </p>
+          <div
+            class="flex justify-between max-md:grid max-md:grid-cols-2 max-md:gap-3"
+          >
+            <button
+              x-data="{ text: window.innerWidth >= 768 ? 'Предыдущая новость' : 'Пред. новость' }"
+              x-text="text"
+              class="border-2 border-[linear-gradient(126.05deg, #666666 0%, #141414 33.73%);] text-white px-5 py-3 rounded-[8px] font-bold text-nowrap"
+            ></button>
+            <button
+              x-data="{ text: window.innerWidth >= 768 ? ' Следующая новсть' : 'След. новсть' }"
+              x-text="text"
+              class="button_gradient text-[#0F0F0F] px-5 py-3 rounded-[8px] font-bold text-nowrap"
+            >
+              Следующая новсть
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#0F0F0F] max-w-[1280px] mx-auto md:pb-20">
+        <h2
+          class="text_gradient2 uppercase text-[28px] font-bold pb-6 pt-16 text-left max-md:px-3 max-md:pb-6 max-md:text-2xl"
+        >
+          Похожие новости
+        </h2>
+        <div
+          class="max-w-[1240px] mx-auto max-md:px-3 max-md:pb-18"
+          x-data="{ 
+           activeSlide: 0, 
+           totalSlides: 12, 
+           perPage: 3,
+           itemsPerRow: window.innerWidth >= 768 ? 4 : 1,
+         
+           nextSlide() {
+               this.activeSlide = (this.activeSlide + 1) % Math.ceil(this.totalSlides / this.perPage);
+           },
+           prevSlide() {
+               this.activeSlide = (this.activeSlide - 1 + Math.ceil(this.totalSlides / this.perPage)) % Math.ceil(this.totalSlides / this.perPage);
+           }
+        }"
+        >
+          <div class="relative overflow-hidden">
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              :style="'transform: translateX(-' + (activeSlide * 100) + '%)'"
+            >
+              <template x-for="slideIndex in Math.ceil(totalSlides / perPage)">
+                <div
+                  class="grid flex-shrink-0 w-full gap-8"
+                  :class="itemsPerRow === 1 ? 'grid-cols-1 md:grid-cols-4 lg:grid-cols-5' : 'grid-cols-3'"
+                >
+                  <template x-for="i in perPage">
+                    <div
+                      x-show="(slideIndex - 1) * perPage + i <= totalSlides"
+                      class="p-2 bg-[#1A1A1A] rounded-[16px]"
+                    >
+                      <div
+                        class="flex max-md:flex-col justify-between items-center md:gap-4"
+                      >
+                        <div
+                          class="w-[132px] h-[132px] relative max-md:w-full max-md:h-[145px]"
+                        >
+                          <p
+                            class="absolute top-1 left-1 bg-[#00000099] text-xs rounded-[4px] px-1 text-white font-bold"
+                          >
+                            21.02.25
+                          </p>
+                          <img
+                            src="../imgs/card.png"
+                            class="w-[132px] h-[132px] max-md:w-full max-md:h-[145px] object-cover rounded-[8px]"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex flex-col flex-shrink-100">
+                          <h3
+                            class="mb-1 font-semibold text-left text-white leading-[20px] max-md:mt-3"
+                          >
+                            Lorem ipsum dolor sit amet consectetur. Rhoncus
+                          </h3>
+                          <p class="text-xs text-white text-left">
+                            Lorem ipsum dolor sit amet consectetur. Rhoncus
+                            sagittis ac in volutpat magna magna. Luctus id
+                            feugiat sollicitudin quis. Facilisis sagittis risus
+                            condimentum amet in et sed non nec.Lorem ipsum dolor
+                            sit amet consectetur.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-6 space-x-6 iteams-center">
+            <button
+              @click="prevSlide()"
+              class="rounded-full cursor-pointer h-9 w-9 button_gradient"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="flex items-center justify-center space-x-2">
+              <template x-for="i in Math.ceil(totalSlides / perPage)">
+                <div
+                  @click="activeSlide = i - 1"
+                  :class="{'bg-white': activeSlide === i - 1, 'bg-gray-500': activeSlide !== i - 1}"
+                  class="w-3 h-3 rounded-full cursor-pointer"
+                ></div>
+              </template>
+            </div>
+            <button
+              @click="nextSlide()"
+              class="rounded-full cursor-pointer h-9 w-9 button_gradient"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="contact" class="bg-[#090909]">
+      <div class="max-w-[1280px] mx-auto max-md:px-3">
+        <div class="grid grid-cols-5 max-md:grid-cols-2 py-8 gap-[10px]">
+          <div
+            class="flex flex-col items-center justify-center w-[235px] max-md:w-full mx-auto h-[116px] relative bg_footerItem"
+          >
+            <div class="border_image !rounded-[12px]"></div>
+            <div class="flex gap-[14px]">
+              <img src="../imgs/icons/user.svg" alt="" />
+              <img src="../imgs/icons/telegram.svg" alt="" />
+              <img src="../imgs/icons/notification.svg" alt="" />
+            </div>
+
+            <h3 class="uppercase text-[12px] font-bold text_gradient2 mt-5">
+              OPENUPS SERVICE
+            </h3>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center w-[235px] max-md:w-full mx-auto h-[116px] relative bg_footerItem"
+          >
+            <div class="border_image !rounded-[12px]"></div>
+            <div class="flex gap-[14px]">
+              <img src="../imgs/icons/user.svg" alt="" />
+              <img src="../imgs/icons/telegram.svg" alt="" />
+              <img src="../imgs/icons/notification.svg" alt="" />
+            </div>
+
+            <h3 class="uppercase text-[12px] font-bold text_gradient2 mt-5">
+              OPENUPS SERVICE
+            </h3>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center w-[235px] max-md:w-full mx-auto h-[116px] relative bg_footerItem"
+          >
+            <div class="border_image !rounded-[12px]"></div>
+            <div class="flex gap-[14px]">
+              <img src="../imgs/icons/user.svg" alt="" />
+              <img src="../imgs/icons/telegram.svg" alt="" />
+              <img src="../imgs/icons/notification.svg" alt="" />
+            </div>
+
+            <h3 class="uppercase text-[12px] font-bold text_gradient2 mt-5">
+              OPENUPS SERVICE
+            </h3>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center w-[235px] max-md:w-full mx-auto h-[116px] relative bg_footerItem"
+          >
+            <div class="border_image !rounded-[12px]"></div>
+            <div class="flex gap-[14px]">
+              <img src="../imgs/icons/user.svg" alt="" />
+              <img src="../imgs/icons/telegram.svg" alt="" />
+              <img src="../imgs/icons/notification.svg" alt="" />
+            </div>
+
+            <h3 class="uppercase text-[12px] font-bold text_gradient2 mt-5">
+              OPENUPS SERVICE
+            </h3>
+          </div>
+          <div
+            class="flex flex-col items-center justify-center w-[235px] max-md:w-full mx-auto h-[116px] relative bg_footerItem max-md:col-span-2"
+          >
+            <div class="border_image !rounded-[12px]"></div>
+            <div class="flex gap-[14px]">
+              <img src="../imgs/icons/user.svg" alt="" />
+              <img src="../imgs/icons/telegram.svg" alt="" />
+              <img src="../imgs/icons/notification.svg" alt="" />
+            </div>
+
+            <h3 class="uppercase text-[12px] font-bold text_gradient2 mt-5">
+              OPENUPS SERVICE
+            </h3>
+          </div>
+        </div>
+        <p class="pb-8 text-sm text-center text-white">© ZenCrew 2025</p>
+      </div>
+    </footer>
+  </body>
+</html>

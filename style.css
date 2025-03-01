@@ -35,6 +35,9 @@ html {
     #f7f7f7 97.93%
   );
 }
+.modal_gradient {
+  background: linear-gradient(126.05deg, #444444 0%, #141414 33.73%);
+}
 
 @keyframes rotateText {
   from {
